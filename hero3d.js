@@ -193,7 +193,7 @@
 
     // --- 2. Floating 3D Diploma Scroll ---
     const scrollGroup = new THREE.Group();
-    scrollGroup.position.set(-0.95, -0.56, 0.42);
+    scrollGroup.position.set(-0.98, -0.44, 0.42);
     scrollGroup.rotation.set(0.18, 0.35, 0.62);
     showcase.add(scrollGroup);
 
@@ -425,7 +425,7 @@
 
       // Subtle tassel sway and scroll counter-bob
       tasselPivot.rotation.z = prefersReducedMotion ? 0.05 : Math.sin(elapsed * 2.4) * 0.09 + 0.05;
-      scrollGroup.position.y = -0.56 + (prefersReducedMotion ? 0 : Math.sin(elapsed * 1.9 + 1.2) * 0.06);
+      scrollGroup.position.y = -0.44 + (prefersReducedMotion ? 0 : Math.sin(elapsed * 1.9 + 1.2) * 0.06);
 
       // Update ambient floating sparkles
       for (let i = 0; i < ambientPieces.length; i++) {
