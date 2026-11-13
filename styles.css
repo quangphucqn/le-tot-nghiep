@@ -905,51 +905,53 @@ button {
   border-radius: 8px;
 }
 
-/* ==================== TIPS & SCHEDULE ==================== */
-.tips-section {
-  margin-top: 2.5rem;
-}
-
-.tips-header {
-  margin-bottom: 1.15rem;
-}
-
-.tips-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.tip-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+/* ==================== ONE-WAY NOTICE & SCHEDULE ==================== */
+.oneway-notice {
+  margin-top: 1.75rem;
+  background: #fffbeb;
+  border: 1.5px solid #fcd34d;
   border-radius: var(--radius-lg);
-  padding: 1.2rem;
+  padding: 1.1rem 1.25rem;
   box-shadow: var(--shadow-sm);
 }
 
-.tip-num {
-  display: inline-block;
+.oneway-notice-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.65rem;
+}
+
+.oneway-notice-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.74rem;
   font-weight: 800;
-  font-size: 0.78rem;
-  color: var(--gold);
+  letter-spacing: 0.05em;
   background: var(--navy);
-  padding: 0.2rem 0.58rem;
+  color: var(--gold-bright);
+  padding: 0.25rem 0.68rem;
   border-radius: 999px;
-  margin-bottom: 0.6rem;
 }
 
-.tip-card h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1.02rem;
-  font-weight: 800;
-  color: var(--navy);
+.oneway-notice-sub {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #78350f;
 }
 
-.tip-card p {
+.oneway-notice-list {
   margin: 0;
-  font-size: 0.89rem;
-  color: var(--text-muted);
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.32rem;
+  font-size: 0.88rem;
+  color: #451a03;
+}
+
+.oneway-notice-list strong {
+  color: var(--navy);
 }
 
 .timeline-card {

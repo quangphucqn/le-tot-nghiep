@@ -6,6 +6,7 @@ Trang web hướng dẫn khách tham dự Lễ Tốt Nghiệp ngày **14/11/2026
 1. **Báo Người Lao Động** — 123 Võ Văn Tần, Q.3 (~1 phút đi bộ)
 2. **Ngân hàng OCB** — 123–127 Võ Văn Tần, Q.3 (~1–2 phút đi bộ)
 3. **Công viên Tao Đàn** — Ngã tư Trương Định – Nguyễn Thị Minh Khai, Q.1 (~3 phút đi bộ)
+4. **Cung Văn hóa Lao động** — 55B Nguyễn Thị Minh Khai, Q.1 (~3–4 phút đi bộ)
 
 ## Triển khai
 Trang web tĩnh (HTML/CSS/JS + Leaflet) được deploy trực tiếp qua GitHub Pages.

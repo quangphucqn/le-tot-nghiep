@@ -13,7 +13,7 @@
     name: 'Trường Đại học Mở TP.HCM',
     address: '97 Võ Văn Tần, P. Xuân Hòa (P.6 cũ), Quận 3, TP.HCM',
     coords: [10.77645, 106.69043],
-    note: 'Hẹn gặp mọi người lúc 11:30 Thứ Bảy 14/11/2026. Do bãi xe trường đã hết chỗ, vui lòng gửi xe ở 1 trong 3 bãi P1–P3 bên dưới.',
+    note: 'Hẹn gặp mọi người lúc 11:30 Thứ Bảy 14/11/2026. Do bãi xe trường đã hết chỗ, vui lòng gửi xe ở 1 trong 4 bãi P1–P4 bên dưới.',
     gmapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=10.77645,106.69043'
   };
 
@@ -79,6 +79,28 @@
       ],
       note: 'Chỗ gửi xe rộng rãi ngay góc ngã tư Trương Định – Nguyễn Thị Minh Khai (cổng Công viên Tao Đàn). Gửi xe xong đi bộ ngược lên đường Trương Định ~3 phút là tới cổng 97 Võ Văn Tần.',
       gmapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=10.77562,106.69205'
+    },
+    {
+      id: 'p4-cvhld',
+      type: 'parking',
+      code: 'P4',
+      shortLabel: 'Cung VHLĐ (55B)',
+      labelPlacement: 'above',
+      tag: 'RỘNG RÃI • ~3–4 PHÚT ĐI BỘ',
+      distance: '~250m',
+      walkMinutes: '~3–4 phút đi bộ',
+      name: 'Bãi giữ xe Cung Văn hóa Lao động',
+      address: '55B Nguyễn Thị Minh Khai, P. Bến Thành, Quận 1',
+      coords: [10.77665, 106.69265],
+      walkPath: [
+        [10.77665, 106.69265],
+        [10.77673, 106.69234],
+        [10.77600, 106.69166],
+        [10.77667, 106.69066],
+        [10.77645, 106.69043]
+      ],
+      note: 'Bãi giữ xe rộng rãi ngay cạnh Công viên Tao Đàn, mặt tiền 55B Nguyễn Thị Minh Khai (có lối gửi xe phía đường Trương Định và Huyền Trân Công Chúa). Đi bộ ra ngã tư Trương Định rồi ngược lên 97 Võ Văn Tần.',
+      gmapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=10.77665,106.69265'
     }
   ];
 
@@ -359,6 +381,29 @@
       })
     }).addTo(oneWayGroup);
 
+    // Nguyễn Thị Minh Khai one-way SW -> NE
+    L.polyline(
+      [
+        [10.77455, 106.69030],
+        [10.77755, 106.69310]
+      ],
+      {
+        color: '#102542',
+        weight: 2.5,
+        opacity: 0.4,
+        dashArray: '4 8'
+      }
+    ).addTo(oneWayGroup);
+
+    L.marker([10.77492, 106.69065], {
+      interactive: false,
+      icon: L.divIcon({
+        className: 'custom-marker-wrap',
+        html: '<div class="oneway-badge">Nguyễn Thị Minh Khai 1 chiều ↗</div>',
+        iconSize: [0, 0]
+      })
+    }).addTo(oneWayGroup);
+
     if (oneWayVisible) {
       oneWayGroup.addTo(map);
     }
@@ -582,7 +627,7 @@
       shareBtn.addEventListener('click', async () => {
         const shareData = {
           title: 'Lễ Tốt Nghiệp Trần Quang Phục (14/11 • 11:30)',
-          text: 'Mời bạn đến dự lễ tốt nghiệp của Phục tại ĐH Mở TP.HCM (97 Võ Văn Tần) lúc 11:30 Thứ Bảy 14/11. Xem bản đồ 3 bãi giữ xe gần trường ở đây nhé:',
+          text: 'Mời bạn đến dự lễ tốt nghiệp của Phục tại ĐH Mở TP.HCM (97 Võ Văn Tần) lúc 11:30 Thứ Bảy 14/11. Xem bản đồ 4 bãi giữ xe gần trường ở đây nhé:',
           url: window.location.href
         };
 
@@ -620,7 +665,7 @@
           'DTEND:20261114T063000Z',
           'SUMMARY:Lễ Tốt Nghiệp Trần Quang Phục - ĐH Mở TP.HCM',
           'LOCATION:Trường Đại học Mở TP.HCM, 97 Võ Văn Tần, Quận 3, TP.HCM',
-          'DESCRIPTION:Trường hết chỗ gửi xe. Các bãi gửi xe gần trường: (1) Báo Người Lao Động 123 Võ Văn Tần, (2) Ngân hàng OCB 123-127 Võ Văn Tần, (3) Công viên Tao Đàn (Ngã tư Trương Định - Nguyễn Thị Minh Khai).',
+          'DESCRIPTION:Trường hết chỗ gửi xe. Các bãi gửi xe gần trường: (1) Báo Người Lao Động 123 Võ Văn Tần, (2) Ngân hàng OCB 123-127 Võ Văn Tần, (3) Công viên Tao Đàn (Ngã tư Trương Định - Nguyễn Thị Minh Khai), (4) Cung Văn hóa Lao động 55B Nguyễn Thị Minh Khai.',
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\r\n');
