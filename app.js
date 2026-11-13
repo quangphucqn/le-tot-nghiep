@@ -166,10 +166,14 @@
     const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
     const mins = totalMinutes % 60;
 
+    const vnDayFmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' });
+    const isSameDay = vnDayFmt.format(now) === vnDayFmt.format(target);
+
     if (days >= 1) {
       el.textContent = `⏳ Còn ${days} ngày ${hours} giờ (14/11 • 11:30)`;
     } else if (hours >= 1) {
-      el.textContent = `⏳ Hôm nay • Còn ${hours} giờ ${mins} phút nữa`;
+      const dayLabel = isSameDay ? 'Hôm nay' : 'Ngày mai';
+      el.textContent = `⏳ ${dayLabel} • Còn ${hours} giờ ${mins} phút nữa`;
     } else {
       el.textContent = `⏳ Sắp bắt đầu • Còn ${mins} phút nữa`;
     }
