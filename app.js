@@ -23,7 +23,7 @@
       type: 'parking',
       code: 'P1',
       shortLabel: 'Báo NLĐ (123)',
-      labelPlacement: 'above',
+      labelPlacement: 'left',
       tag: 'GẦN NHẤT • ~1 PHÚT ĐI BỘ',
       distance: '~80m',
       walkMinutes: '~1 phút đi bộ',
@@ -236,6 +236,7 @@
       'pin-pill',
       loc.type === 'venue' ? 'pin-pill--venue' : 'pin-pill--parking',
       loc.labelPlacement === 'below' ? 'pin-pill--below' : '',
+      loc.labelPlacement === 'left' ? 'pin-pill--left' : '',
       isActive ? 'is-active' : ''
     ].filter(Boolean).join(' ');
 
@@ -349,7 +350,7 @@
       }
     ).addTo(oneWayGroup);
 
-    L.marker([10.77618, 106.69128], {
+    L.marker([10.77495, 106.69262], {
       interactive: false,
       icon: L.divIcon({
         className: 'custom-marker-wrap',
@@ -397,7 +398,7 @@
     if (banner) {
       badge.textContent = loc.code;
       title.textContent = `${loc.name} → ĐH Mở (97 VVT)`;
-      meta.textContent = `Đi bộ ${loc.walkMinutes} (${loc.distance}) • ${loc.address}`;
+      meta.textContent = `${loc.walkMinutes} (${loc.distance}) • ${loc.address}`;
       gmapsLink.href = loc.gmapsUrl;
       banner.hidden = false;
     }
@@ -489,7 +490,7 @@
         .addTo(map);
 
       marker.on('click', () => {
-        selectLocation(loc.id, { openPopup: false, scrollToMapOnMobile: false });
+        selectLocation(loc.id, { openPopup: true, scrollToMapOnMobile: false });
       });
 
       markerMap.set(loc.id, marker);

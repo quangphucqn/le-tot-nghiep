@@ -776,6 +776,14 @@ button {
   border-bottom: 7px solid #ffffff;
 }
 
+.pin-pill--left {
+  transform: translate(-82%, calc(-100% - 10px));
+}
+
+.pin-pill--left::after {
+  left: 82%;
+}
+
 .pin-pill--venue {
   background: var(--navy);
   color: var(--gold-bright);
@@ -804,6 +812,10 @@ button {
 
 .pin-pill--below.is-active {
   transform: translate(-50%, 12px) scale(1.07);
+}
+
+.pin-pill--left.is-active {
+  transform: translate(-82%, calc(-108% - 10px)) scale(1.07);
 }
 
 .pin-pill--venue.is-active {
