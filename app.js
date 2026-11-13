@@ -85,14 +85,6 @@
   const ALL_LOCATIONS = [VENUE, ...PARKING_LOTS];
 
   const TILE_SOURCES = {
-    voyager: {
-      url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-      options: {
-        subdomains: 'abcd',
-        maxZoom: 20,
-        attribution: '&copy; OpenStreetMap &copy; CARTO'
-      }
-    },
     google: {
       url: 'https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=vi',
       options: {
@@ -120,7 +112,7 @@
 
   let map = null;
   let activeTileLayer = null;
-  let activeLayerKey = 'voyager';
+  let activeLayerKey = 'google';
   let tileErrorCount = 0;
   let hasAutoSwitched = false;
   let routePolyline = null;
@@ -219,7 +211,7 @@
     container.querySelectorAll('[data-focus-id]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-focus-id');
-        selectLocation(id, { scrollToMapOnMobile: true });
+        selectLocation(id, { openPopup: false, scrollToMapOnMobile: true });
       });
     });
 
@@ -227,7 +219,7 @@
       card.addEventListener('click', (e) => {
         if (e.target.closest('a, button')) return;
         const id = card.getAttribute('data-id');
-        selectLocation(id, { scrollToMapOnMobile: false });
+        selectLocation(id, { openPopup: false, scrollToMapOnMobile: false });
       });
     });
   }
@@ -299,7 +291,7 @@
       tileErrorCount += 1;
       if (tileErrorCount >= 4 && !hasAutoSwitched) {
         hasAutoSwitched = true;
-        const fallbackOrder = ['google', 'osmde', 'voyager'];
+        const fallbackOrder = ['osmde', 'google', 'satellite'];
         const nextKey = fallbackOrder.find((k) => k !== activeLayerKey);
         if (nextKey) {
           setTileLayer(nextKey);
@@ -445,6 +437,8 @@
         setTimeout(() => {
           targetMarker.openPopup();
         }, 250);
+      } else {
+        map.closePopup();
       }
     }
 
@@ -460,9 +454,9 @@
     if (!map) return;
     const bounds = L.latLngBounds(ALL_LOCATIONS.map((l) => l.coords));
     map.fitBounds(bounds, {
-      paddingTopLeft: [48, 70],
-      paddingBottomRight: [48, 95],
-      maxZoom: 18,
+      paddingTopLeft: [70, 72],
+      paddingBottomRight: [82, 108],
+      maxZoom: 17,
       animate: true
     });
   }
