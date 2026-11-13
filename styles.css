@@ -91,6 +91,103 @@ button {
   z-index: 1;
 }
 
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.88fr);
+    gap: 2.15rem;
+  }
+}
+
+.hero-stage-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-3d-stage {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-radius: 22px;
+  background: radial-gradient(circle at 50% 42%, rgba(242, 184, 75, 0.16) 0%, rgba(16, 37, 66, 0.52) 55%, rgba(11, 26, 48, 0.72) 100%);
+  border: 1px solid rgba(242, 184, 75, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 18px 40px rgba(4, 12, 24, 0.38);
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.hero-3d-stage.is-dragging {
+  cursor: grabbing;
+}
+
+@media (min-width: 960px) {
+  .hero-3d-stage {
+    height: 340px;
+  }
+}
+
+.hero-3d-halo {
+  position: absolute;
+  inset: 14% 18%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(242, 184, 75, 0.22) 0%, rgba(20, 184, 166, 0.1) 48%, transparent 72%);
+  pointer-events: none;
+}
+
+.hero-3d-canvas {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.hero-3d-stage.is-ready .hero-3d-canvas {
+  opacity: 1;
+}
+
+.hero-3d-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hero-3d-stage.is-ready .hero-3d-fallback {
+  opacity: 0;
+}
+
+.hero-3d-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 0.7rem;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: rgba(11, 26, 48, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #e2e8f0;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.26rem 0.72rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
 .hero-badge-row {
   display: flex;
   flex-wrap: wrap;
@@ -165,6 +262,8 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-md);
   backdrop-filter: blur(8px);
+  transition: transform 0.22s ease, border-color 0.22s ease;
+  transform-style: preserve-3d;
 }
 
 .meta-icon {
@@ -807,15 +906,53 @@ button {
 
 .pin-pill.is-active {
   transform: translate(-50%, calc(-108% - 10px)) scale(1.07);
-  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.32), 0 10px 22px rgba(16, 37, 66, 0.34);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.32), 0 12px 24px rgba(16, 37, 66, 0.38);
+  animation: pinFloat3d 2.4s ease-in-out infinite;
 }
 
 .pin-pill--below.is-active {
   transform: translate(-50%, 12px) scale(1.07);
+  animation: pinFloat3dBelow 2.4s ease-in-out infinite;
 }
 
 .pin-pill--left.is-active {
   transform: translate(-82%, calc(-108% - 10px)) scale(1.07);
+  animation: pinFloat3dLeft 2.4s ease-in-out infinite;
+}
+
+@keyframes pinFloat3d {
+  0%, 100% {
+    transform: translate(-50%, calc(-108% - 10px)) scale(1.07);
+  }
+  50% {
+    transform: translate(-50%, calc(-108% - 15px)) scale(1.08);
+  }
+}
+
+@keyframes pinFloat3dBelow {
+  0%, 100% {
+    transform: translate(-50%, 12px) scale(1.07);
+  }
+  50% {
+    transform: translate(-50%, 17px) scale(1.08);
+  }
+}
+
+@keyframes pinFloat3dLeft {
+  0%, 100% {
+    transform: translate(-82%, calc(-108% - 10px)) scale(1.07);
+  }
+  50% {
+    transform: translate(-82%, calc(-108% - 15px)) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-pill.is-active,
+  .pin-pill--below.is-active,
+  .pin-pill--left.is-active {
+    animation: none;
+  }
 }
 
 .pin-pill--venue.is-active {
