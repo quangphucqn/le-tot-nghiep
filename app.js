@@ -13,7 +13,7 @@
     name: 'Trường Đại học Mở TP.HCM',
     address: '97 Võ Văn Tần, P. Xuân Hòa (P.6 cũ), Quận 3, TP.HCM',
     coords: [10.77645, 106.69043],
-    note: 'Hẹn gặp mọi người lúc 11:30 Thứ Bảy 14/11/2026. Do bãi xe trường đã hết chỗ, vui lòng gửi xe ở 1 trong 4 bãi P1–P4 bên dưới.',
+    note: 'Hẹn gặp mọi người lúc 11:30 Thứ Bảy 14/11/2026. Vì lượng người đông nên bãi giữ xe trong trường có thể hết chỗ — bạn có thể gửi xe ở 1 trong 4 bãi P1–P4 ngay gần trường bên dưới.',
     gmapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=10.77645,106.69043'
   };
 
@@ -665,7 +665,7 @@
           'DTEND:20261114T063000Z',
           'SUMMARY:Lễ Tốt Nghiệp Trần Quang Phục - ĐH Mở TP.HCM',
           'LOCATION:Trường Đại học Mở TP.HCM, 97 Võ Văn Tần, Quận 3, TP.HCM',
-          'DESCRIPTION:Trường hết chỗ gửi xe. Các bãi gửi xe gần trường: (1) Báo Người Lao Động 123 Võ Văn Tần, (2) Ngân hàng OCB 123-127 Võ Văn Tần, (3) Công viên Tao Đàn (Ngã tư Trương Định - Nguyễn Thị Minh Khai), (4) Cung Văn hóa Lao động 55B Nguyễn Thị Minh Khai.',
+          'DESCRIPTION:Vì lượng người đông nên bãi giữ xe trong trường có thể hết chỗ. Các bãi gửi xe gần trường: (1) Báo Người Lao Động 123 Võ Văn Tần, (2) Ngân hàng OCB 123-127 Võ Văn Tần, (3) Công viên Tao Đàn (Ngã tư Trương Định - Nguyễn Thị Minh Khai), (4) Cung Văn hóa Lao động 55B Nguyễn Thị Minh Khai.',
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\r\n');
